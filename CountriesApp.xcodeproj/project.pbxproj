@@ -23,6 +23,7 @@
 		A4ECE9462997DF9A00E4FD3B /* CountriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECE9452997DF9A00E4FD3B /* CountriesListView.swift */; };
 		A4ECE9482997DFB500E4FD3B /* CountriesListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECE9472997DFB500E4FD3B /* CountriesListDataSource.swift */; };
 		A4ECE94A2997DFC600E4FD3B /* CountriesListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECE9492997DFC600E4FD3B /* CountriesListRepository.swift */; };
+		A4ECE94C2997ED2A00E4FD3B /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECE94B2997ED2A00E4FD3B /* UITableView+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		A4ECE9452997DF9A00E4FD3B /* CountriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesListView.swift; sourceTree = "<group>"; };
 		A4ECE9472997DFB500E4FD3B /* CountriesListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesListDataSource.swift; sourceTree = "<group>"; };
 		A4ECE9492997DFC600E4FD3B /* CountriesListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesListRepository.swift; sourceTree = "<group>"; };
+		A4ECE94B2997ED2A00E4FD3B /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				A4ECE93B2997D56200E4FD3B /* Collection+Ext.swift */,
+				A4ECE94B2997ED2A00E4FD3B /* UITableView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				A4E74E052996BAC100981407 /* AppDelegate.swift in Sources */,
 				A4E74E072996BAC100981407 /* SceneDelegate.swift in Sources */,
 				A4ECE9442997DF8100E4FD3B /* CountriesListViewController.swift in Sources */,
+				A4ECE94C2997ED2A00E4FD3B /* UITableView+Ext.swift in Sources */,
 				A4ECE9402997DF1C00E4FD3B /* CountriesListProtocols.swift in Sources */,
 				A4ECE93C2997D56200E4FD3B /* Collection+Ext.swift in Sources */,
 			);

@@ -14,6 +14,16 @@ final class CountriesListView: UIView {
 
     private let refreshControl = UIRefreshControl()
 
+    private let scrollToTopButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "arrow.up"), for: .normal)
+        button.tintColor = .white
+        button.backgroundColor = .gray
+        button.layer.cornerRadius = 4
+        button.isHidden = true
+        return button
+    }()
+
     private let activityIndicatorView: UIActivityIndicatorView = {
         let activityIndicatorView = UIActivityIndicatorView(style: .medium)
         activityIndicatorView.color = .gray
@@ -46,10 +56,12 @@ final class CountriesListView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+        scrollToTopButton.translatesAutoresizingMaskIntoConstraints = false
+
         addSubview(tableView)
         addSubview(activityIndicatorView)
         addSubview(errorLabel)
+        addSubview(scrollToTopButton)
         
         tableView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         tableView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
@@ -62,11 +74,17 @@ final class CountriesListView: UIView {
         errorLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         errorLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
 
+        NSLayoutConstraint.activate([
+            scrollToTopButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            scrollToTopButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30)
+        ])
+
         addActions()
     }
 
     private func addActions() {
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        scrollToTopButton.addTarget(self, action: #selector(scrollToTop), for: .touchUpInside)
     }
 
     @objc
@@ -75,11 +93,17 @@ final class CountriesListView: UIView {
         refreshControl.endRefreshing()
     }
 
+    @objc
+    private func scrollToTop() {
+        tableView.scrollToTop()
+    }
+
     private func setupReady(_ countries: [Country]) {
         dataSource.updateItems(countries)
 
         DispatchQueue.main.async {
             self.tableView.isHidden = false
+            self.scrollToTopButton.isHidden = false
             self.activityIndicatorView.isHidden = true
             self.errorLabel.isHidden = true
             self.activityIndicatorView.stopAnimating()
@@ -91,6 +115,8 @@ final class CountriesListView: UIView {
         tableView.isHidden = true
         activityIndicatorView.isHidden = false
         errorLabel.isHidden = true
+        scrollToTopButton.isHidden = true
+
         activityIndicatorView.startAnimating()
     }
 
@@ -99,6 +125,8 @@ final class CountriesListView: UIView {
             self.tableView.isHidden = true
             self.activityIndicatorView.isHidden = true
             self.errorLabel.isHidden = false
+            self.scrollToTopButton.isHidden = true
+
             self.activityIndicatorView.stopAnimating()
         }
     }

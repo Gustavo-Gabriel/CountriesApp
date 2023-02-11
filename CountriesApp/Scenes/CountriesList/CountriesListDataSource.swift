@@ -1,12 +1,14 @@
 import UIKit
 
-final class CountriesListDataSource: NSObject, UITableViewDataSource {
+final class CountriesListDataSource: NSObject {
     private var countries: [Country] = []
 
     func updateItems(_ countries: [Country]) {
         self.countries = countries
     }
+}
 
+extension CountriesListDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return countries.count
     }
