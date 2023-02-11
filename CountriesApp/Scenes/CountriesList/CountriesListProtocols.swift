@@ -13,3 +13,7 @@ protocol CountriesListRepositoryType {
 protocol CountriesListPresenterType {
     func requestCountries()
 }
+
+protocol CountriesListViewDelegate: AnyObject {
+    func refresh()
+}

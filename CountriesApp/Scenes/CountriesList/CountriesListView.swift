@@ -1,6 +1,8 @@
 import UIKit
 
 final class CountriesListView: UIView {
+    weak var delegate: CountriesListViewDelegate?
+
     private let dataSource = CountriesListDataSource()
 
     private let tableView: UITableView = {
@@ -9,6 +11,8 @@ final class CountriesListView: UIView {
         tableView.backgroundColor = .systemBackground
         return tableView
     }()
+
+    private let refreshControl = UIRefreshControl()
 
     private let activityIndicatorView: UIActivityIndicatorView = {
         let activityIndicatorView = UIActivityIndicatorView(style: .medium)
@@ -29,6 +33,7 @@ final class CountriesListView: UIView {
         super.init(frame: frame)
         setupUI()
         tableView.dataSource = dataSource
+        tableView.refreshControl = refreshControl
     }
 
     required init?(coder: NSCoder) {
@@ -56,6 +61,18 @@ final class CountriesListView: UIView {
 
         errorLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         errorLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+
+        addActions()
+    }
+
+    private func addActions() {
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    }
+
+    @objc
+    private func refresh() {
+        delegate?.refresh()
+        refreshControl.endRefreshing()
     }
 
     private func setupReady(_ countries: [Country]) {

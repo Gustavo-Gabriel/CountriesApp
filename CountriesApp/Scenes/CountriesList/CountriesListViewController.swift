@@ -7,6 +7,8 @@ final class CountriesListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+
+        countriesListView.delegate = self
         presenter.controller = self
         presenter.requestCountries()
     }
@@ -32,5 +34,11 @@ final class CountriesListViewController: UIViewController {
 extension CountriesListViewController: CountriesListViewControllerType {
     func show(state: CountriesListState) {
         countriesListView.show(state: state)
+    }
+}
+
+extension CountriesListViewController: CountriesListViewDelegate {
+    func refresh() {
+        presenter.requestCountries()
     }
 }
