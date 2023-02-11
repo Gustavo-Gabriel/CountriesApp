@@ -10,7 +10,7 @@ final class CountriesListViewController: UIViewController {
 
         countriesListView.delegate = self
         presenter.controller = self
-        presenter.requestCountries()
+        presenter.fetchCountries()
     }
 
     private func setupUI() {
@@ -32,13 +32,13 @@ final class CountriesListViewController: UIViewController {
 }
 
 extension CountriesListViewController: CountriesListViewControllerType {
-    func show(state: CountriesListState) {
-        countriesListView.show(state: state)
+    func updateViewState(_ state: CountriesListState) {
+        countriesListView.updateViewState(state)
     }
 }
 
 extension CountriesListViewController: CountriesListViewDelegate {
-    func refresh() {
-        presenter.requestCountries()
+    func didPullToRefresh() {
+        presenter.refreshCountries()
     }
 }

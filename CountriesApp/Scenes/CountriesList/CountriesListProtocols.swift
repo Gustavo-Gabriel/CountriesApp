@@ -1,19 +1,21 @@
-protocol CountriesListViewType {
-    func show(state: CountriesListState)
+protocol CountriesListViewType: AnyObject {
+    func updateViewState(_ state: CountriesListState)
+    func setDelegate(_ delegate: CountriesListViewDelegate?)
 }
 
 protocol CountriesListViewControllerType: AnyObject {
-    func show(state: CountriesListState)
+    func updateViewState(_ state: CountriesListState)
 }
 
 protocol CountriesListRepositoryType {
-    func requestList(completion: @escaping (Result<[Country], Error>) -> Void)
+    func fetchCountries(completion: @escaping (Result<[Country], Error>) -> Void)
 }
 
 protocol CountriesListPresenterType {
-    func requestCountries()
+    func fetchCountries()
+    func refreshCountries()
 }
 
 protocol CountriesListViewDelegate: AnyObject {
-    func refresh()
+    func didPullToRefresh()
 }

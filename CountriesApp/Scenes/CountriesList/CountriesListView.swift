@@ -89,7 +89,7 @@ final class CountriesListView: UIView {
 
     @objc
     private func refresh() {
-        delegate?.refresh()
+        delegate?.didPullToRefresh()
         refreshControl.endRefreshing()
     }
 
@@ -133,7 +133,7 @@ final class CountriesListView: UIView {
 }
 
 extension CountriesListView: CountriesListViewType {
-    func show(state: CountriesListState) {
+    func updateViewState(_ state: CountriesListState) {
         switch state {
         case .ready(let countries):
             setupReady(countries)
@@ -142,5 +142,9 @@ extension CountriesListView: CountriesListViewType {
         case .error:
             setupError()
         }
+    }
+
+    func setDelegate(_ delegate: CountriesListViewDelegate?) {
+        self.delegate = delegate
     }
 }

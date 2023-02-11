@@ -3,16 +3,16 @@ final class CountriesListPresenter: CountriesListPresenterType {
 
     private var state: CountriesListState = .loading {
         didSet {
-            controller?.show(state: state)
+            controller?.updateViewState(state)
         }
     }
 
     private let repository = CountriesListRepository(network: Network.shared)
 
-    func requestCountries() {
+    func fetchCountries() {
         state = .loading
 
-        repository.requestList { [weak self] result in
+        repository.fetchCountries { [weak self] result in
             switch result {
             case .success(let countries):
                 self?.handleSucess(countries: countries)
@@ -20,6 +20,10 @@ final class CountriesListPresenter: CountriesListPresenterType {
                 self?.state = .error
             }
         }
+    }
+
+    func refreshCountries() {
+        fetchCountries()
     }
 
     private func handleSucess(countries: [Country]) {

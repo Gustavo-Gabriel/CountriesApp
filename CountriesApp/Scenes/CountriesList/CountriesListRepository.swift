@@ -5,8 +5,7 @@ final class CountriesListRepository: CountriesListRepositoryType {
         self.network = network
     }
 
-    func requestList(completion: @escaping (Result<[Country], Error>) -> Void) {
+    func fetchCountries(completion: @escaping (Result<[Country], Error>) -> Void) {
         network.execute(Service.all, type: [Country].self, completion: completion)
     }
-    
 }
