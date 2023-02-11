@@ -53,33 +53,45 @@ final class CountriesListView: UIView {
     private func setupUI() {
         backgroundColor = .systemBackground
 
+        addSubviews()
+        setupConstraints()
+        addActions()
+    }
+
+    private func addSubviews() {
+        addSubview(tableView)
+        addSubview(activityIndicatorView)
+        addSubview(errorLabel)
+        addSubview(scrollToTopButton)
+    }
+
+    private func setupConstraints() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
         scrollToTopButton.translatesAutoresizingMaskIntoConstraints = false
 
-        addSubview(tableView)
-        addSubview(activityIndicatorView)
-        addSubview(errorLabel)
-        addSubview(scrollToTopButton)
-        
-        tableView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        tableView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: topAnchor),
+            tableView.leftAnchor.constraint(equalTo: leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: rightAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
 
-        activityIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        activityIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            activityIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            activityIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
 
-        errorLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        errorLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            errorLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            errorLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
 
         NSLayoutConstraint.activate([
             scrollToTopButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             scrollToTopButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30)
         ])
-
-        addActions()
     }
 
     private func addActions() {
