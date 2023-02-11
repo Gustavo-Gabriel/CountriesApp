@@ -1,5 +1,6 @@
 struct Country: Codable {
     let name: CountryName
+    let flag: String
 }
 
 struct CountryName: Codable {

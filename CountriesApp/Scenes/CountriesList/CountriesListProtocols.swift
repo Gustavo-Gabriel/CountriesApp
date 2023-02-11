@@ -18,4 +18,5 @@ protocol CountriesListPresenterType {
 
 protocol CountriesListViewDelegate: AnyObject {
     func didPullToRefresh()
+    func didSelectCountry(_ country: Country)
 }

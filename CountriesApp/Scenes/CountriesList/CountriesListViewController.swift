@@ -38,6 +38,11 @@ extension CountriesListViewController: CountriesListViewControllerType {
 }
 
 extension CountriesListViewController: CountriesListViewDelegate {
+    func didSelectCountry(_ country: Country) {
+        let countryDetailsViewController = CountryDetailViewController(country: country)
+        navigationController?.pushViewController(countryDetailsViewController, animated: true)
+    }
+    
     func didPullToRefresh() {
         presenter.refreshCountries()
     }

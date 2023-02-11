@@ -43,7 +43,9 @@ final class CountriesListView: UIView {
         super.init(frame: frame)
         setupUI()
         tableView.dataSource = dataSource
+        tableView.delegate = dataSource
         tableView.refreshControl = refreshControl
+        dataSource.delegate = self
     }
 
     required init?(coder: NSCoder) {
@@ -158,5 +160,11 @@ extension CountriesListView: CountriesListViewType {
 
     func setDelegate(_ delegate: CountriesListViewDelegate?) {
         self.delegate = delegate
+    }
+}
+
+extension CountriesListView: CountriesListDataSourceDelegate {
+    func didSelectCountry(_ country: Country) {
+        delegate?.didSelectCountry(country)
     }
 }

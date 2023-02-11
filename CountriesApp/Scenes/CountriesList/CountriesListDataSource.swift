@@ -1,6 +1,12 @@
 import UIKit
 
+protocol CountriesListDataSourceDelegate: AnyObject {
+    func didSelectCountry(_ country: Country)
+}
+
 final class CountriesListDataSource: NSObject {
+    weak var delegate: CountriesListDataSourceDelegate?
+
     private var countries: [Country] = []
 
     func updateItems(_ countries: [Country]) {
@@ -17,5 +23,12 @@ extension CountriesListDataSource: UITableViewDataSource {
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: nil)
         cell.textLabel?.text = countries[safe: indexPath.row]?.name.official
         return cell
+    }
+}
+
+extension CountriesListDataSource: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCountry = countries[indexPath.row]
+        delegate?.didSelectCountry(selectedCountry)
     }
 }
