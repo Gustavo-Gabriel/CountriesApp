@@ -39,6 +39,13 @@ final class CountriesListView: UIView {
         return errorMessageLabel
     }()
 
+    private let buttonReload: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Tentar Novamente", for: .normal)
+        button.isHidden = true
+        return button
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -64,6 +71,7 @@ final class CountriesListView: UIView {
         addSubview(tableView)
         addSubview(activityIndicatorView)
         addSubview(errorLabel)
+        addSubview(buttonReload)
         addSubview(scrollToTopButton)
     }
 
@@ -71,6 +79,7 @@ final class CountriesListView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
+        buttonReload.translatesAutoresizingMaskIntoConstraints = false
         scrollToTopButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
@@ -91,6 +100,11 @@ final class CountriesListView: UIView {
         ])
 
         NSLayoutConstraint.activate([
+            buttonReload.topAnchor.constraint(equalTo: errorLabel.bottomAnchor, constant: 16),
+            buttonReload.centerXAnchor.constraint(equalTo: centerXAnchor)
+        ])
+
+        NSLayoutConstraint.activate([
             scrollToTopButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             scrollToTopButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30)
         ])
@@ -99,12 +113,18 @@ final class CountriesListView: UIView {
     private func addActions() {
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         scrollToTopButton.addTarget(self, action: #selector(scrollToTop), for: .touchUpInside)
+        buttonReload.addTarget(self, action: #selector(reload), for: .touchUpInside)
     }
 
     @objc
     private func refresh() {
         delegate?.didPullToRefresh()
         refreshControl.endRefreshing()
+    }
+
+    @objc
+    private func reload() {
+        delegate?.didPullToRefresh()
     }
 
     @objc
@@ -120,6 +140,7 @@ final class CountriesListView: UIView {
             self.scrollToTopButton.isHidden = false
             self.activityIndicatorView.isHidden = true
             self.errorLabel.isHidden = true
+            self.buttonReload.isHidden = true
             self.activityIndicatorView.stopAnimating()
             self.tableView.reloadData()
         }
@@ -130,6 +151,7 @@ final class CountriesListView: UIView {
         activityIndicatorView.isHidden = false
         errorLabel.isHidden = true
         scrollToTopButton.isHidden = true
+        buttonReload.isHidden = true
 
         activityIndicatorView.startAnimating()
     }
@@ -139,6 +161,7 @@ final class CountriesListView: UIView {
             self.tableView.isHidden = true
             self.activityIndicatorView.isHidden = true
             self.errorLabel.isHidden = false
+            self.buttonReload.isHidden = false
             self.scrollToTopButton.isHidden = true
 
             self.activityIndicatorView.stopAnimating()
