@@ -132,7 +132,7 @@ final class CountriesListView: UIView {
         tableView.scrollToTop()
     }
 
-    private func setupReady(_ countries: [Country]) {
+    private func setupReady(_ countries: [CountryModel]) {
         dataSource.updateItems(countries)
 
         DispatchQueue.main.async {
@@ -187,7 +187,7 @@ extension CountriesListView: CountriesListViewType {
 }
 
 extension CountriesListView: CountriesListDataSourceDelegate {
-    func didSelectCountry(_ country: Country) {
+    func didSelectCountry(_ country: CountryModel) {
         delegate?.didSelectCountry(country)
     }
 }

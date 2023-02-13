@@ -17,6 +17,7 @@ final class CountryDetailView: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 32, weight: .semibold)
+        label.numberOfLines = 0
         return label
     }()
 
@@ -59,23 +60,21 @@ final class CountryDetailView: UIView {
         NSLayoutConstraint.activate([
             headerStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             headerStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            headerStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            headerStackView.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor),
+            headerStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ])
 
         NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: headerStackView.bottomAnchor, constant: 16),
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            descriptionLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
     }
 
     // Public methods
-    func updateUI(with country: Country) {
-        titleLabel.text = country.name.common
-        descriptionLabel.text = "TEETSTSTSTTS"
+    func updateUI(with country: CountryModel) {
+        titleLabel.text = country.nameCommon
+        descriptionLabel.text = country.nameOfficial
         flagLabel.text = country.flag
+//        print(country.translations)
     }
 }
-

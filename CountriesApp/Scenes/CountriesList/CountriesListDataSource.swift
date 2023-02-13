@@ -1,15 +1,15 @@
 import UIKit
 
 protocol CountriesListDataSourceDelegate: AnyObject {
-    func didSelectCountry(_ country: Country)
+    func didSelectCountry(_ country: CountryModel)
 }
 
 final class CountriesListDataSource: NSObject {
     weak var delegate: CountriesListDataSourceDelegate?
 
-    private var countries: [Country] = []
+    private var countries: [CountryModel] = []
 
-    func updateItems(_ countries: [Country]) {
+    func updateItems(_ countries: [CountryModel]) {
         self.countries = countries
     }
 }
@@ -21,7 +21,7 @@ extension CountriesListDataSource: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: nil)
-        cell.textLabel?.text = countries[safe: indexPath.row]?.name.official
+        cell.textLabel?.text = countries[safe: indexPath.row]?.nameCommon
         return cell
     }
 }

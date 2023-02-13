@@ -1,10 +1,10 @@
 import UIKit
 
 final class CountryDetailViewController: UIViewController {
-    private var country: Country
+    private var country: CountryModel
     private let countryDetailView = CountryDetailView()
 
-    init(country: Country) {
+    init(country: CountryModel) {
         self.country = country
         super.init(nibName: nil, bundle: nil)
     }
@@ -17,6 +17,7 @@ final class CountryDetailViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         countryDetailView.updateUI(with: country)
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
 
     private func setupUI() {
@@ -28,9 +29,5 @@ final class CountryDetailViewController: UIViewController {
         countryDetailView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         countryDetailView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         countryDetailView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-    }
-
-    private func setupNavBar() {
-        title = country.name.common
     }
 }

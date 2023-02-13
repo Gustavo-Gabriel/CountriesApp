@@ -38,7 +38,7 @@ extension CountriesListViewController: CountriesListViewControllerType {
 }
 
 extension CountriesListViewController: CountriesListViewDelegate {
-    func didSelectCountry(_ country: Country) {
+    func didSelectCountry(_ country: CountryModel) {
         let countryDetailsViewController = CountryDetailViewController(country: country)
         navigationController?.pushViewController(countryDetailsViewController, animated: true)
     }

@@ -1,5 +1,5 @@
 enum CountriesListState {
-    case ready(countries: [Country])
+    case ready(countries: [CountryModel])
     case loading
     case error
 }
