@@ -1,6 +1,7 @@
 struct Country: Codable {
     let name: CountryName
     let flag: String
+    let population: Int
     let translations: [String: Translation]
 }
 

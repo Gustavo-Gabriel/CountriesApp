@@ -50,10 +50,14 @@ final class CountriesListAdapter: CountriesListAdapterType {
                 print("O Pai: \(translation.common)")
                 return CountryModel(nameCommon: translation.common,
                                     nameOfficial: translation.official,
-                                    flag: $0.flag)
+                                    flag: $0.flag,
+                                    population: $0.population)
             }
 
-            return CountryModel(nameCommon: $0.name.common, nameOfficial: $0.name.common, flag: $0.flag)
+            return CountryModel(nameCommon: $0.name.common,
+                                nameOfficial: $0.name.common,
+                                flag: $0.flag,
+                                population: $0.population)
         }
 
         return countryModel

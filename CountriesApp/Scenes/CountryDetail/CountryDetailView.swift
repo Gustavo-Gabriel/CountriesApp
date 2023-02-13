@@ -21,7 +21,7 @@ final class CountryDetailView: UIView {
         return label
     }()
 
-    private let descriptionLabel: UILabel = {
+    private let populationLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.numberOfLines = 0
@@ -48,14 +48,14 @@ final class CountryDetailView: UIView {
         headerStackView.addArrangedSubview(flagLabel)
         headerStackView.addArrangedSubview(titleLabel)
         addSubview(headerStackView)
-        addSubview(descriptionLabel)
+        addSubview(populationLabel)
     }
 
     private func setupConstraints() {
         flagLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         headerStackView.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        populationLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             headerStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
@@ -64,17 +64,16 @@ final class CountryDetailView: UIView {
         ])
 
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: headerStackView.bottomAnchor, constant: 16),
-            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            populationLabel.topAnchor.constraint(equalTo: headerStackView.bottomAnchor, constant: 16),
+            populationLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            populationLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
         ])
     }
 
     // Public methods
     func updateUI(with country: CountryModel) {
         titleLabel.text = country.nameCommon
-        descriptionLabel.text = country.nameOfficial
+        populationLabel.text = String(country.population)
         flagLabel.text = country.flag
-//        print(country.translations)
     }
 }
