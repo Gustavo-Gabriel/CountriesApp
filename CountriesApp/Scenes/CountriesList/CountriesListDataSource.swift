@@ -30,5 +30,7 @@ extension CountriesListDataSource: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCountry = countries[indexPath.row]
         delegate?.didSelectCountry(selectedCountry)
+
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
