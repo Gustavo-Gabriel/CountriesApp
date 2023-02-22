@@ -20,3 +20,11 @@ protocol CountriesListViewDelegate: AnyObject {
     func didPullToRefresh()
     func didSelectCountry(_ country: CountryModel)
 }
+
+protocol CountriesListDataSourceDelegate: AnyObject {
+    func didSelectCountry(_ country: CountryModel)
+}
+
+protocol CountriesListAdapterType {
+    func adapt(_ countries: [Country]) -> [CountryModel]
+}

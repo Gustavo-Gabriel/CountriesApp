@@ -1,9 +1,5 @@
 import UIKit
 
-protocol CountriesListDataSourceDelegate: AnyObject {
-    func didSelectCountry(_ country: CountryModel)
-}
-
 final class CountriesListDataSource: NSObject {
     weak var delegate: CountriesListDataSourceDelegate?
 

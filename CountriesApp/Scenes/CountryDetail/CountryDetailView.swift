@@ -70,8 +70,7 @@ final class CountryDetailView: UIView {
         ])
     }
 
-    // Public methods
-    func updateUI(with country: CountryModel) {
+    func show(country: CountryModel) {
         titleLabel.text = country.nameCommon
         populationLabel.text = String(country.population)
         flagLabel.text = country.flag

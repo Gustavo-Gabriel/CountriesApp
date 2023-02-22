@@ -1,11 +1,13 @@
 import UIKit
 
 final class CountryDetailViewController: UIViewController {
-    private var country: CountryModel
-    private let countryDetailView = CountryDetailView()
+    private let country: CountryModel
+    private let countryDetailView: CountryDetailView
 
-    init(country: CountryModel) {
+    init(country: CountryModel,
+         countryDetailView: CountryDetailView = CountryDetailView()) {
         self.country = country
+        self.countryDetailView = countryDetailView
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -16,7 +18,7 @@ final class CountryDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        countryDetailView.updateUI(with: country)
+        countryDetailView.show(country: country)
         navigationController?.navigationBar.prefersLargeTitles = false
     }
 

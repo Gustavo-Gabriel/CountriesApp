@@ -1,14 +1,5 @@
 import Foundation
 
-enum ServiceError: Error {
-    case failedToCreateRequest
-    case failedToGetData
-}
-
-protocol NetworkType {
-    func execute<T: Codable>(_ service: ServiceType, type: T.Type, completion: @escaping (Result<T, Error>) -> Void)
-}
-
 final class Network: NetworkType {
     static let shared = Network()
 
@@ -28,7 +19,6 @@ final class Network: NetworkType {
                 return
             }
 
-            // Decode Response
             do {
                 let result = try JSONDecoder().decode(type, from: data)
                 completion(.success(result))

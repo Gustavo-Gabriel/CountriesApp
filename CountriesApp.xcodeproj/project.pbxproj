@@ -31,6 +31,12 @@
 		A4ECE9592999550000E4FD3B /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECE9582999550000E4FD3B /* Translation.swift */; };
 		A4ECE95D2999616000E4FD3B /* CountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECE95C2999616000E4FD3B /* CountryModel.swift */; };
 		A4ECE95F29996C1600E4FD3B /* LanguageMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECE95E29996C1600E4FD3B /* LanguageMapping.swift */; };
+		A4ECE99829A6757000E4FD3B /* CountriesListAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECE99729A6757000E4FD3B /* CountriesListAdapter.swift */; };
+		A4ECE99B29A675AC00E4FD3B /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECE99A29A675AC00E4FD3B /* ServiceType.swift */; };
+		A4ECE99D29A675C800E4FD3B /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECE99C29A675C800E4FD3B /* RequestType.swift */; };
+		A4ECE99F29A675EA00E4FD3B /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECE99E29A675EA00E4FD3B /* ServiceError.swift */; };
+		A4ECE9A129A675FD00E4FD3B /* NetworkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECE9A029A675FD00E4FD3B /* NetworkType.swift */; };
+		A4ECE9A329A6762400E4FD3B /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECE9A229A6762400E4FD3B /* HTTPMethod.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +66,12 @@
 		A4ECE95C2999616000E4FD3B /* CountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModel.swift; sourceTree = "<group>"; };
 		A4ECE95E29996C1600E4FD3B /* LanguageMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageMapping.swift; sourceTree = "<group>"; };
 		A4ECE961299A7FD800E4FD3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A4ECE99729A6757000E4FD3B /* CountriesListAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesListAdapter.swift; sourceTree = "<group>"; };
+		A4ECE99A29A675AC00E4FD3B /* ServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
+		A4ECE99C29A675C800E4FD3B /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
+		A4ECE99E29A675EA00E4FD3B /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		A4ECE9A029A675FD00E4FD3B /* NetworkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkType.swift; sourceTree = "<group>"; };
+		A4ECE9A229A6762400E4FD3B /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,9 +140,12 @@
 		A4E74E1E2996CB6600981407 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				A4ECE99929A6759F00E4FD3B /* Protocols */,
 				A4E74E1F2996CB8200981407 /* Request.swift */,
 				A4E74E212996CEB600981407 /* Network.swift */,
 				A4E74E232996D33400981407 /* Service.swift */,
+				A4ECE99E29A675EA00E4FD3B /* ServiceError.swift */,
+				A4ECE9A229A6762400E4FD3B /* HTTPMethod.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -164,6 +179,7 @@
 				A4ECE9472997DFB500E4FD3B /* CountriesListDataSource.swift */,
 				A4ECE9492997DFC600E4FD3B /* CountriesListRepository.swift */,
 				A4E74E082996BAC100981407 /* CountriesListPresenter.swift */,
+				A4ECE99729A6757000E4FD3B /* CountriesListAdapter.swift */,
 			);
 			path = CountriesList;
 			sourceTree = "<group>";
@@ -175,6 +191,16 @@
 				A4ECE95229981EDB00E4FD3B /* CountryDetailViewController.swift */,
 			);
 			path = CountryDetail;
+			sourceTree = "<group>";
+		};
+		A4ECE99929A6759F00E4FD3B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A4ECE99A29A675AC00E4FD3B /* ServiceType.swift */,
+				A4ECE99C29A675C800E4FD3B /* RequestType.swift */,
+				A4ECE9A029A675FD00E4FD3B /* NetworkType.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,15 +279,20 @@
 				A4ECE9482997DFB500E4FD3B /* CountriesListDataSource.swift in Sources */,
 				A4ECE94F29981AEB00E4FD3B /* CountryDetailView.swift in Sources */,
 				A4ECE9572999532600E4FD3B /* Language.swift in Sources */,
+				A4ECE9A129A675FD00E4FD3B /* NetworkType.swift in Sources */,
 				A4ECE9422997DF6A00E4FD3B /* CountriesListState.swift in Sources */,
 				A4ECE95329981EDB00E4FD3B /* CountryDetailViewController.swift in Sources */,
+				A4ECE99F29A675EA00E4FD3B /* ServiceError.swift in Sources */,
 				A4E74E092996BAC100981407 /* CountriesListPresenter.swift in Sources */,
+				A4ECE99D29A675C800E4FD3B /* RequestType.swift in Sources */,
 				A4ECE94A2997DFC600E4FD3B /* CountriesListRepository.swift in Sources */,
 				A4E74E222996CEB600981407 /* Network.swift in Sources */,
 				A4E74E202996CB8200981407 /* Request.swift in Sources */,
 				A4ECE95F29996C1600E4FD3B /* LanguageMapping.swift in Sources */,
+				A4ECE9A329A6762400E4FD3B /* HTTPMethod.swift in Sources */,
 				A4E74E052996BAC100981407 /* AppDelegate.swift in Sources */,
 				A4ECE95129981CFC00E4FD3B /* UIImage+Ext.swift in Sources */,
+				A4ECE99829A6757000E4FD3B /* CountriesListAdapter.swift in Sources */,
 				A4ECE95D2999616000E4FD3B /* CountryModel.swift in Sources */,
 				A4E74E072996BAC100981407 /* SceneDelegate.swift in Sources */,
 				A4ECE9442997DF8100E4FD3B /* CountriesListViewController.swift in Sources */,
@@ -269,6 +300,7 @@
 				A4ECE9402997DF1C00E4FD3B /* CountriesListProtocols.swift in Sources */,
 				A4ECE93C2997D56200E4FD3B /* Collection+Ext.swift in Sources */,
 				A4ECE9592999550000E4FD3B /* Translation.swift in Sources */,
+				A4ECE99B29A675AC00E4FD3B /* ServiceType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

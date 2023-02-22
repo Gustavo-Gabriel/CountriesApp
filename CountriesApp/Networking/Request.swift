@@ -1,16 +1,5 @@
 import Foundation
 
-protocol ServiceType {
-    var path: String { get }
-    var pathComponents: [String] { get }
-    var queryParameters: [URLQueryItem] { get }
-    var httpMethod: HTTPMethod { get }
-}
-
-protocol RequestType {
-    func buildURL() -> URLRequest?
-}
-
 final class Request: RequestType {
     private let baseURL = "https://restcountries.com/"
     private let APIVersion = "v3.1/"
